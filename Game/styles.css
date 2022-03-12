@@ -1,0 +1,40 @@
+.grid{
+    border: 1px solid;
+    height: 270px;
+    width: 270px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid div {
+    /*  180 pixeli/9 divuri 
+    TODO:CHANGE THIS TO BE RESPONSIVE */
+    height: 30px;
+    width: 30px;
+}
+
+.ending-block{
+    background-color: red;
+}
+.starting-block{
+    background-color: blue;
+}
+
+.l1, .l2, .l3{
+    background-color: brown;
+}
+
+.l4, .l5{
+background-color: lightblue;
+}
+
+.c1{
+    background-color: black;
+}
+
+.c2,.c3{
+    background-color: lightgray;
+}
+.frog {
+    background-color: green;
+}
