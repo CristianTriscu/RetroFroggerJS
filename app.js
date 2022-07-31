@@ -40,30 +40,70 @@ document.addEventListener('touchend', e => {
     checkDirection()
 })
 
+function moveLeft() {
+    if (currentIndex % width < width - 1) currentIndex -= 1;
+    touchstartX = 0
+    touchendX = 0
+    touchstartY = 0
+    touchendY = 0
+    return
+}
+
+function moveRight() {
+    if (currentIndex % width < width - 1) currentIndex += 1;
+    touchstartX = 0
+    touchendX = 0
+    touchstartY = 0
+    touchendY = 0
+    return
+}
+
+function moveUp() {
+    if (currentIndex - width >= 0) currentIndex -= width;
+    touchstartX = 0
+    touchendX = 0
+    touchstartY = 0
+    touchendY = 0
+    return
+}
+
+function moveDown() {
+    if (currentIndex + width < width * width) currentIndex += width;
+    touchstartX = 0
+    touchendX = 0
+    touchstartY = 0
+    touchendY = 0
+    return
+}
 
 function x() {
     if (touchendX < touchstartX) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
-        if (currentIndex % width < width - 1) currentIndex -= 1;
+        moveLeft();
 
     }
     if (touchendX > touchstartX) {
         console.log("touchend", touchendX);
-        console.log("touchstart", touchstartX)
-        if (currentIndex % width < width - 1) currentIndex += 1;
+        console.log("touchstart", touchstartX);
+        moveRight();
+
 
     }
     if (touchendY < touchstartY) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
-        if (currentIndex - width >= 0) currentIndex -= width;
-  
+        moveUp();
+
+
+
     }
     if (touchendY > touchstartY) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
-        if (currentIndex + width < width * width) currentIndex += width;
+        moveDown();
+
+
 
     }
 }
