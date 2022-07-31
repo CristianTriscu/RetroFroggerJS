@@ -11,23 +11,82 @@ const width = 9;
 let timerId;
 let currentTime = 20;
 let outcomeTimerId;
+let touchstartX = 0
+let touchendX = 0
+let touchstartY = 0
+let touchendY = 0
 
+function checkDirection() {
+    console.log(currentIndex)
+
+}
+
+document.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX
+})
+
+document.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX
+    checkDirection()
+})
+
+document.addEventListener('touchstart', e => {
+    touchstartY = e.changedTouches[0].screenY
+})
+
+document.addEventListener('touchend', e => {
+    touchendY = e.changedTouches[0].screenY
+    checkDirection()
+})
+
+function x() {
+    if (touchendX < touchstartX) {
+        console.log("touchend", touchendX);
+        console.log("touchstart", touchstartX)
+        if (currentIndex % width < width - 1) currentIndex -= 1;
+        return
+    }
+    if (touchendX > touchstartX) {
+        console.log("touchend", touchendX);
+        console.log("touchstart", touchstartX)
+        if (currentIndex % width < width - 1) currentIndex += 1;
+        return
+    }
+    if (touchendY < touchstartY) {
+        console.log("touchend", touchendX);
+        console.log("touchstart", touchstartX)
+        if (currentIndex - width >= 0) currentIndex -= width;
+        return
+    }
+    if (touchendY > touchstartY) {
+        console.log("touchend", touchendX);
+        console.log("touchstart", touchstartX)
+        if (currentIndex + width < width * width) currentIndex += width;
+        return
+    }
+}
 function moveFrog(e) {
     squares[currentIndex].classList.remove('frog');
-    switch (e.key) {
-        case 'ArrowLeft':
-            if (currentIndex % width !== 0) currentIndex -= 1;
-            break;
-        case 'ArrowRight':
-            if (currentIndex % width < width - 1) currentIndex += 1;
-            break;
-        case 'ArrowUp':
-            if (currentIndex - width >= 0) currentIndex -= width;
-            break;
-        case 'ArrowDown':
-            if (currentIndex + width < width * width) currentIndex += width;
-            break;
-    }
+    x();
+    // switch (e.key) {
+    //     case 'ArrowLeft':
+    //         if (currentIndex % width !== 0) currentIndex -= 1;
+    //         break;
+    //     case 'ArrowRight':
+    //         if (currentIndex % width < width - 1) currentIndex += 1;
+    //         break;
+    //     case 'ArrowUp':
+    //         if (currentIndex - width >= 0) currentIndex -= width;
+    //         break;
+    //     case 'ArrowDown':
+    //         if (currentIndex + width < width * width) currentIndex += width;
+    //         break;
+
+
+
+    // }
+
+    // checkDirection()
     squares[currentIndex].classList.add('frog')
 }
 
@@ -171,6 +230,7 @@ startPauseButton.addEventListener('click', () => {
         timerId = setInterval(autoMoveElements, 1000);
         outcomeTimerId = setInterval(checkOutcomes, 50);
         document.addEventListener('keyup', moveFrog);
+        document.addEventListener('touchend', moveFrog);
     }
 })
 
