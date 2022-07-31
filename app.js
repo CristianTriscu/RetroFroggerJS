@@ -16,11 +16,15 @@ let touchendX = 0
 let touchstartY = 0
 let touchendY = 0
 
-window.onscroll = function () { window.scrollTo(0, 0); };
 function checkDirection() {
     console.log(currentIndex)
 
 }
+
+document.body.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+},{passive:false});
+
 
 document.addEventListener('touchstart', e => {
     touchstartX = e.changedTouches[0].screenX
