@@ -22,7 +22,10 @@ function checkDirection() {
 }
 
 document.body.addEventListener('touchstart', function(e) {
-    e.preventDefault();
+    if(e.target.getInnerHTML() !==' Start/Stop\n        '){
+         e.preventDefault();
+    }
+ 
 },{passive:false});
 
 
