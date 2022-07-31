@@ -1,3 +1,7 @@
+
+const disableBodyScroll = bodyScrollLock.disableBodyScroll;
+const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+
 const timeLeftDisplay = document.querySelector('#time-left');
 const resutlDisplay = document.querySelector('#result');
 const startPauseButton = document.querySelector('#start-pause-button');
@@ -16,6 +20,11 @@ let touchendX = 0
 let touchstartY = 0
 let touchendY = 0
 
+
+const targetElement = document.querySelector('body');
+
+// 3. ...in some event handler after showing the target element...disable body scroll
+disableBodyScroll(targetElement);
 function checkDirection() {
     console.log(currentIndex)
 
