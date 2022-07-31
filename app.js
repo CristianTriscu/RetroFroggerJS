@@ -16,6 +16,7 @@ let touchendX = 0
 let touchstartY = 0
 let touchendY = 0
 
+window.onscroll = function () { window.scrollTo(0, 0); };
 function checkDirection() {
     console.log(currentIndex)
 
@@ -39,30 +40,31 @@ document.addEventListener('touchend', e => {
     checkDirection()
 })
 
+
 function x() {
     if (touchendX < touchstartX) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
         if (currentIndex % width < width - 1) currentIndex -= 1;
-        return
+
     }
     if (touchendX > touchstartX) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
         if (currentIndex % width < width - 1) currentIndex += 1;
-        return
+
     }
     if (touchendY < touchstartY) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
         if (currentIndex - width >= 0) currentIndex -= width;
-        return
+  
     }
     if (touchendY > touchstartY) {
         console.log("touchend", touchendX);
         console.log("touchstart", touchstartX)
         if (currentIndex + width < width * width) currentIndex += width;
-        return
+
     }
 }
 function moveFrog(e) {
@@ -233,4 +235,5 @@ startPauseButton.addEventListener('click', () => {
         document.addEventListener('touchend', moveFrog);
     }
 })
+
 
